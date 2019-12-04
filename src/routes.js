@@ -24,11 +24,13 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 
 routes.get('/products', ProductsController.index);
-routes.get('/ownproducts', ProductsController.ownProducts);
 routes.get('/products/:id', ProductsController.oneproduct);
+routes.get('/ownproducts', ProductsController.ownProducts);
 routes.post('/products', ProductsController.store);
 routes.put('/products', ProductsController.update);
 routes.delete('/products/:id', ProductsController.delete);
+
+routes.get('/catalog', ProductsController.catalog);
 
 routes.put('/users', UserController.update);
 

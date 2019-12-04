@@ -28,6 +28,22 @@ class ProductsController {
     return res.json(products);
   }
 
+  async catalog(req, res) {
+    const products = await Products.findAll({
+      where: { user_id: req.userId },
+      attributes: ['id', 'name', 'price', 'description'],
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    return res.json(products);
+  }
+
   async ownProducts(req, res) {
     const { page = 1 } = req.query;
 
